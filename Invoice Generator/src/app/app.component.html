@@ -1,0 +1,32 @@
+<app-bg></app-bg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-none">
+  <a class="navbar-brand"><h5>Invoice-Generator</h5></a>
+  <div class="navbar-brand" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/takeatour" routerLinkActive="active" ><h5>Take a Tour</h5></a>
+      </li>
+      <li class="nav-item" *ngIf="!loggedin()">
+        <a class="nav-link" routerLink="/register" routerLinkActive="active"><h5>Register</h5> </a>
+      </li>
+      <li class="nav-item" *ngIf="loggedin()">
+        <a class="nav-link" (click)="onlogout()" routerLink="/login" routerLinkActive="active" style="color: red;"><h5>Logout</h5></a>
+      </li>
+
+      <li class="nav-item" *ngIf="!loggedin()">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active"><h5>Login</h5> </a>
+      </li>
+      
+    </ul>
+    
+  </div>
+  <h4  class="A" align-item:flex-end>{{today | date:"medium"}}</h4>
+</nav>
+
+<!-- <video width="320" height="240" controls>
+    <source src="" type="video/mp4">
+    <source src="assets\Lion.mp4" type="video/ogg">
+  </video> -->
+<router-outlet></router-outlet>

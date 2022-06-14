@@ -1,0 +1,187 @@
+<form id="form" #myForm="ngForm">
+  <div class="wrapper">
+    <div class="title">
+      <h1> Registration Form</h1>
+    </div>
+
+    <div class="form">
+      <div class="inputfield">
+        <label for="validationServer01" class="form-label" style="color: white;">Full Name</label>
+        <input type="text" class="input" placeholder=" Name" name="name" #name="ngModel" required
+          [(ngModel)]="registerDetails.name">
+      </div>
+      <span *ngIf="
+      name.errors &&
+      (name.touched || name.dirty)
+    " style="color: red;"> Name is required</span>
+
+
+
+      <div class="inputfield">
+        <label for="inputPassword" class="form-label" style="color: white;">Password</label>
+        <input type="password" class="input" [(ngModel)]="registerDetails.password" name="inputPassword"
+          #inputPassword="ngModel" required placeholder="Password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$" minlength="8" />
+      </div>
+      <div class="error form-control-feedback">
+        <span *ngIf="
+                inputPassword.errors &&
+                (inputPassword.touched || inputPassword.dirty)
+              " style="color: red;">Password is required</span>
+        <!-- <span *ngIf="!inputPassword.errors.minlength">Password must be 8 characters long</span> -->
+      </div>
+
+      <div class="inputfield">
+        <label for="conformPassword" class="form-label" style="color: white;"> Confirm Password</label>
+        <input type="password" class="input" [(ngModel)]="registerDetails.conformpassword" name="conformPassword"
+          #conformPassword="ngModel" required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$" minlength="8"
+          placeholder="Confirm Password" />
+      </div>
+      <div class="error form-control-feedback">
+        <span *ngIf="(conformPassword.touched || conformPassword.dirty) &&
+        (registerDetails.password !== registerDetails.conformpassword) " style="color: red;">conformPassword must match
+          with
+          password</span>
+      </div>
+
+      <!-- <div class="inputfield">
+        <label style="color: white;">Gender</label>
+        <div class="custom_select">
+          <select>
+            <option value="">Select</option>
+            
+              <input   [(ngModel)]="registerDetails.gender">
+              <option value="male"  >Male</option>
+            
+              <input   [(ngModel)]="registerDetails.gender">
+              <option value="female" >Female</option>
+            
+           
+          </select>
+        </div>
+      </div> -->
+
+      <table>
+        <td>
+          <div class="form-check form-check-inline">
+            <label style="color: white;">Gender   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label></div>
+        </td>
+        <td>
+          <div class="inputfield">
+            <input class="form-check-input position-centre" type="radio" name="gender" [(ngModel)]="registerDetails.gender" value="Male"
+              id="flexRadioDefault1" />
+            <label class="form-check-label" for="gender" style="color: white;"> Male </label>
+          </div>
+          
+          <div class="inputfield">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" [(ngModel)]="registerDetails.gender"
+              value="Female" id="flexRadioDefault2" />
+            <label class="form-check-label" for="flexRadioDefault2" style="color: white;">
+              Female
+            </label>
+          </div>
+        </td>
+      </table>
+      <!-- <div class="form-check form-check-inline">
+        <label style="color: white;">Gender</label>
+
+        <div class="inputfield">
+          <input class="form-check-input position-centre" type="radio" name="gender" [(ngModel)]="registerDetails.gender" value="Male"
+            id="flexRadioDefault1" />
+          <label class="form-check-label" for="gender" style="color: white;"> Male </label>
+        </div>
+        
+        <div class="inputfield">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" [(ngModel)]="registerDetails.gender"
+            value="Female" id="flexRadioDefault2" />
+          <label class="form-check-label" for="flexRadioDefault2" style="color: white;">
+            Female
+          </label>
+        </div>
+      </div> -->
+    
+      <div class="inputfield">
+        <label style="color: white;" class="inputfield">Email Address</label>
+        <input type="email" name="email"class="input" placeholder="Email Address" [(ngModel)]="registerDetails.email"
+          #txtemail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,3}$" required />
+      </div>
+      <span *ngIf="txtemail.invalid && txtemail.touched" class="error form-control-feedback" style="color: red;">E-mail
+        is required</span>
+
+      <div class="inputfield">
+        <label style="color: white;">Phone Number</label>
+        <input  class="input" placeholder="Phone Number" name="ph" [(ngModel)]="registerDetails.contact"
+          #ph="ngModel"
+          pattern="[6-9]{1}[0-9]{9}" maxlength="10" required>
+          <!-- <input type="tel" id="phone" name="phone"  pattern="+94[7-9]{2}-[0-9]{3}-[0-9]{4}" value="+94"> -->
+      </div>
+
+      <span *ngIf="
+      ph.errors &&
+      (ph.touched || ph.dirty)
+    " style="color: red;">Phone No is required</span>
+
+    <table>
+      <td>
+        <div class="form-check form-check-inline">
+          <label style="color: white;">Type Of User &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></div>
+      </td>
+      <td>
+        <div class="inputfield">
+          <input class="form-check-input" type="radio" name="typeofuser" [(ngModel)]="registerDetails.typeofuser"
+            value="Customer" id="Customer" />
+          <label class="form-check-label" for="Customer" style="color: white;"> Customer</label>
+        </div>
+
+        <div class="inputfield">
+          <input class="form-check-input" type="radio" name="typeofuser" [(ngModel)]="registerDetails.typeofuser"
+            value="Supplier" id="Supplier" />
+          <label class="form-check-label" for="Supplier" style="color: white;">
+            Supplier
+          </label>
+        </div>
+      </td>
+    </table>
+
+      <!-- <div class="form-check form-check-inline">
+        <label style="color: white;">Type Of User</label>
+
+
+        <div class="inputfield">
+          <input class="form-check-input" type="radio" name="typeofuser" [(ngModel)]="registerDetails.typeofuser"
+            value="Customer" id="Customer" />
+          <label class="form-check-label" for="Customer" style="color: white;"> Customer</label>
+        </div>
+
+        <div class="inputfield">
+          <input class="form-check-input" type="radio" name="typeofuser" [(ngModel)]="registerDetails.typeofuser"
+            value="Supplier" id="Supplier" />
+          <label class="form-check-label" for="Supplier" style="color: white;">
+            Supplier
+          </label>
+        </div>
+      </div> -->
+
+
+
+
+      <div class="inputfield terms">
+        <label class="check">
+          <input type="checkbox" required>
+          <span class="checkmark"></span>
+        </label>
+        <p style="color: white;">Agreed to terms and conditions</p>
+      </div>
+      <div class="form-group">
+        <button [disabled]="!myForm.form.valid" type="button" routerLink="/login" class="btn btn-light" (click)="add()">
+          Register
+        </button>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="submitted">
+        Please fill all the fields
+      </div>
+    </div>
+  </div>
+</form>
+<router-outlet></router-outlet>

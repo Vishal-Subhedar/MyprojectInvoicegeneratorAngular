@@ -1,0 +1,91 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="text-center">
+            <h1>Login</h1><hr>
+          </div>
+          <!-- <form  #loginForm="ngForm" (ngSubmit)="onLogin(loginsForm)">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" placeholder="Email Address" name="email" ngModel name="email" [(ngModel)]="loginsForm.email" #email="ngModel" [ngModelOptions]="{standalone: true}">
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="loginsForm.password" #password="ngModel" [ngModelOptions]="{standalone: true}">
+            </div>
+             <table>
+              <td>
+                <div class="form-check form-check-inline">
+                  <label style="color: white;">Type Of User </label></div>
+              </td>
+              <td>
+                <div class="inputfield">
+                  <input class="form-check-input" type="radio" name="typeofuser" 
+                    value="Customer" id="Customer" [(ngModel)]="loginsForm.typeofuser" #typeofuser="ngModel" [ngModelOptions]="{standalone: true}"/>
+                  <label class="form-check-label" for="Customer" style="color: white;"> Customer</label>
+                </div>
+        
+                <div class="inputfield">
+                  <input class="form-check-input" type="radio" name="typeofuser" 
+                    value="Supplier" id="Supplier"  [(ngModel)]="loginsForm.typeofuser" #typeofuser="ngModel"  [ngModelOptions]="{standalone: true}"/>
+                  <label class="form-check-label" for="Supplier" style="color: white;">
+                    Supplier
+                  </label>
+                </div>
+              </td>
+            </table> 
+
+            <button type="submit" class="button button1"  [disabled]="!loginForm.valid">Login</button>
+          </form> -->
+
+          <form #loginForm='ngForm' >
+            
+            <br>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3" style="color: white;">Email address</label>
+                <input type="email" class="form-control" placeholder="Enter your Email" required="required"
+                    ngModel name="email" [(ngModel)]="loginsForm.email" #email="ngModel">
+                <span *ngIf="email.invalid && email.touched"
+                    class="error form-control-feedback text-danger">
+                    E-mail is required
+                </span>
+            </div>
+
+
+            <div class="form-outline mb-3">
+                <label class="form-label" for="form3Example4">Password</label>
+                <input type="password" class="form-control" placeholder="Enter your Password" 
+                    ngModel
+                    name="password" [(ngModel)]="loginsForm.password" #password="ngModel">
+                <!-- <div class="error form-control-feedback text-danger">
+                    <span *ngIf="password.invalid && password.touched">Password is required</span>
+                    <span *ngIf="password.errors">Password must be 8 characters long</span>
+                </div> -->
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3" style="color: white;">
+                        Remember me
+                    </label>
+                </div>
+              
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+                <button (click)="onLogin(loginForm)" [disabled]="!loginForm.valid" type="submit"
+                    class="btn btn-primary btn-block">Login</button>
+                
+            </div>
+
+        </form>
+          <a routerLink="/register" >New User? click here to Register !</a><br/>
+          <a routerLink="/Passwordreset">Forgot Password? click here !</a>
+        </div>
+      </div>
+    </div>
+  </div>

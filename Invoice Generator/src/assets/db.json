@@ -1,0 +1,23 @@
+[
+    {
+        "Product":"Bat",
+        "Price":1000 ,
+        "Quantity":2
+        
+       
+    },
+    {
+      "Product":"Ball",
+      "Price":300,
+      "Quantity":4
+      
+    },
+    {
+      "Product":"hbhb",
+      "Price":400,
+      "Quantity":6 
+    }
+  
+  
+      
+  ]
